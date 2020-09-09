@@ -1,0 +1,44 @@
+﻿@model List<AzureResource>
+@{
+    ViewData["Title"] = "Home Page";
+}
+    <div class="row">
+        <div class="col-3">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="#">Home</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#">Compute</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#">Storage</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#">History</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-9">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">microsoft.compute</h5>
+                    Subscription: <i>97284064-a541-4591-aa38-d52ed9453088</i><br/>
+                    Resource Group: <i>rsgdetectionpoc</i>
+                    <p class="card-text">
+                        <ul id="computeItems">
+                            @{
+                                foreach (var item in Model)
+                                {
+                                    <li class="@item.CurrentHealthStatus">
+                                        <p style="text-align:center;color:#fff;margin-top: 30px;font-size:8px;">
+                                            @item.ResourceId<br/>@item.CurrentHealthStatus
+                                        </p>                                     
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+            </div>
+        </div>
+    </div>
